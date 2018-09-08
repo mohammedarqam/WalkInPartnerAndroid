@@ -1,0 +1,7 @@
+{
+  "name": "wvm",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
