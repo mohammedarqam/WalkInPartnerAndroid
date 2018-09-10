@@ -1,18 +1,39 @@
-<!--
-  Generated template for the MorePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="primary" >
     <ion-title>More</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title  >{{store.RestaurantName}} </ion-card-title>
+      <h2 class="address" >{{store.Address}} </h2>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-item (click)="viewAdmin(store.AdminId)">Owner Details
+    <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+  </ion-item>
+  <ion-item (click)="viewStore()">Store Details
+    <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+  </ion-item>
+  <ion-item (click)="gtFaq()">FAQ
+    <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+  </ion-item>
+  <ion-item (click)="viewComplaints()">Chat with Us
+    <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+  </ion-item>
+
+
+
+  <ion-footer>
+    <button ion-button block small color="danger" (click)="signOutConfirm()" >
+      <ion-icon name="power" padding></ion-icon>
+        Sign Out
+    </button>
+  </ion-footer>
 </ion-content>

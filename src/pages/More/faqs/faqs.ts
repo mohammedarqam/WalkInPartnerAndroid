@@ -5,31 +5,29 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as firebase from 'firebase';
 
-
-
 @IonicPage()
 @Component({
-  selector: 'page-menu',
-  templateUrl: 'menu.html',
+  selector: 'page-faqs',
+  templateUrl: 'faqs.html',
 })
-export class MenuPage {
+export class FaqsPage {
 
-  sid = firebase.auth().currentUser.uid;
-  menuRef: AngularFireList<any>;
-  items: Observable<any[]>;
+  faqRef: AngularFireList<any>;
+  qs: Observable<any[]>;
 
   constructor(
   public navCtrl: NavController, 
   public db : AngularFireDatabase,
-  public navParams: NavParams
-  ) {
-    this.menuRef =db.list(`Menus/${this.sid}`, ref=>ref.orderByChild("Ordered"));
+  public navParams: NavParams) {
 
-    this.items = this.menuRef.snapshotChanges().pipe(
+    this.faqRef =db.list(`VendorExtra`, ref=>ref.orderByChild("Priority"));
+
+    this.qs = this.faqRef.snapshotChanges().pipe(
       map(changes => 
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
+
   }
 
 

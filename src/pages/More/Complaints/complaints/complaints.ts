@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 
-/**
- * Generated class for the ComplaintsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +9,65 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ComplaintsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+  public navCtrl: NavController, 
+  public alertCtrl : AlertController,
+  public navParams: NavParams,
+  public toastCtrl : ToastController,
+  ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ComplaintsPage');
-  }
+  addComplaint() {
+  let alert = this.alertCtrl.create({
+    title: 'Contact',
+    message: 'Give a name to your concern',
+    enableBackdropDismiss : false,
+    inputs: [
+      {
+        name: 'title',
+        placeholder: 'Name'
+      },
+      {
+        name: 'sub',
+        placeholder: 'Subject',
+        type: 'text'
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+      },
+      {
+        text: 'Send',
+        handler: data => {
+          if(data.title){
+            this.sendComplaint(data.title,data.sub);
+          }else{
+            this.presentToast("Mention a Title")
+          }
+        }
+      }
+    ]
+  });
+  alert.present();
+}
+
+sendComplaint(title,sub){
+  console.log(title);
+  console.log(sub);
+}
+presentToast(msg) {
+  let toast = this.toastCtrl.create({
+    message: msg,
+    duration: 3000,
+    position: 'top',
+    showCloseButton : true
+  });
+  toast.present();
+
+}
+
+
 
 }

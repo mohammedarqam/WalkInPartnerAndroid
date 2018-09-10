@@ -29,6 +29,7 @@ import { AdminProfilePage } from '../pages/More/Admin/admin-profile/admin-profil
 import { ComplaintDetailsPage } from '../pages/More/Complaints/complaint-details/complaint-details';
 import { ComplaintsPage } from '../pages/More/Complaints/complaints/complaints';
 import { StoreProfilePage } from '../pages/More/Store/store-profile/store-profile';
+import { FaqsPage } from '../pages/More/faqs/faqs';
 
 
 export const firebaseCred = {
@@ -65,6 +66,7 @@ export const firebaseCred = {
     ComplaintDetailsPage,
     ComplaintsPage,
     StoreProfilePage,
+    FaqsPage,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +97,7 @@ export const firebaseCred = {
     ComplaintDetailsPage,
     ComplaintsPage,
     StoreProfilePage,
+    FaqsPage,
   ],
   providers: [
     StatusBar,

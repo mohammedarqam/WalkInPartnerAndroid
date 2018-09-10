@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the DashboardPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,40 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  sid = firebase.auth().currentUser.uid;
+  restaurantRef = firebase.database().ref("Restaurants").child(this.sid);
+  status : boolean;
+
+  constructor(
+  public navCtrl: NavController, 
+  public navParams: NavParams
+  ) {
+    this.getStatus();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getStatus(){
+    this.restaurantRef.child("Status").once('value',snap=>{
+      this.status = snap.val();
+    })
   }
+  changeStatus(){
+    this.restaurantRef.child("Status").set(this.status).then(()=>{
+    });
+  }
+
 
 }

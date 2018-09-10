@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as firebase from 'firebase';
 
-/**
- * Generated class for the StoreProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -15,11 +11,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StoreProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  sid = firebase.auth().currentUser.uid;
+  storeRef = firebase.database().ref("Restaurants").child(this.sid);
+  store : Array<any> = [];
+  constructor(
+  public navCtrl: NavController, 
+  public navParams: NavParams
+  ) {
+    this.getStore();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad StoreProfilePage');
+  getStore(){ 
+    this.storeRef.once('value',storeSnap=>{
+      this.store = storeSnap.val();
+    })
   }
+
 
 }

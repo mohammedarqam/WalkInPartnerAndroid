@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AdminProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AdminProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ownerKey = this.navParams.get("Okey");
+  adminRef = firebase.database().ref("PartnerAdmins").child(this.ownerKey);
+  admin : Array<any> = [];
+
+
+  constructor(
+  public navCtrl: NavController, 
+  public navParams: NavParams
+  ) {
+    this.getAdmin();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AdminProfilePage');
-  }
-
+getAdmin(){
+  this.adminRef.once('value',ownerSnap=>{
+    this.admin = ownerSnap.val();
+  })
+}
 }

@@ -1,10 +1,12 @@
 <ion-header>
   <ion-navbar color="primary" >
-    <ion-title>Customers</ion-title>
+    <ion-title>FAQ's</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+  <ion-item *ngFor="let q of  (qs | async)?.slice().reverse()">
+  </ion-item>
 
 </ion-content>
