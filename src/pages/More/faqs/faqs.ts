@@ -20,7 +20,7 @@ export class FaqsPage {
   public db : AngularFireDatabase,
   public navParams: NavParams) {
 
-    this.faqRef =db.list(`VendorExtra`, ref=>ref.orderByChild("Priority"));
+    this.faqRef =db.list(`Extra Data/FAQs`, ref=>ref.orderByChild("Priority"));
 
     this.qs = this.faqRef.snapshotChanges().pipe(
       map(changes => 

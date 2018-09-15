@@ -23,7 +23,7 @@ export class MenuPage {
   public db : AngularFireDatabase,
   public navParams: NavParams
   ) {
-    this.menuRef =db.list(`Menus/${this.sid}`, ref=>ref.orderByChild("Ordered"));
+    this.menuRef =db.list(`Restaurant Data/Menus/${this.sid}`, ref=>ref.orderByChild("Ordered"));
 
     this.items = this.menuRef.snapshotChanges().pipe(
       map(changes => 

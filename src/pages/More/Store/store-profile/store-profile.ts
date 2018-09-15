@@ -12,7 +12,7 @@ import * as firebase from 'firebase';
 export class StoreProfilePage {
 
   sid = firebase.auth().currentUser.uid;
-  storeRef = firebase.database().ref("Restaurants").child(this.sid);
+  storeRef = firebase.database().ref("Restaurant Data/Restaurants").child(this.sid);
   store : Array<any> = [];
   constructor(
   public navCtrl: NavController, 

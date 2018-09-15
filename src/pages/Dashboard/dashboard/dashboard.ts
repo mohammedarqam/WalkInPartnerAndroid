@@ -10,7 +10,7 @@ import * as firebase from 'firebase';
 export class DashboardPage {
 
   sid = firebase.auth().currentUser.uid;
-  restaurantRef = firebase.database().ref("Restaurants").child(this.sid);
+  restaurantRef = firebase.database().ref("Restaurant Data/Restaurants").child(this.sid);
   status : boolean;
 
   constructor(

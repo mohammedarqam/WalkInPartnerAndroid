@@ -15,7 +15,7 @@ export class LoginPage {
   pass : string;
   pv : boolean  = false;
   tp : string= "password" ;
-  mainBtn : string = "Sign IN"
+  mainBtn : string = "Sign In"
   loadBtn : boolean = false;
 
   constructor(

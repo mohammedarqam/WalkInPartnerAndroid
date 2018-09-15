@@ -7,6 +7,7 @@
 
 <ion-content padding>
   <ion-item *ngFor="let q of  (qs | async)?.slice().reverse()">
+    {{q.Question}}
   </ion-item>
 
 </ion-content>

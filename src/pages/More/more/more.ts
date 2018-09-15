@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { LoginPage } from '../../Utility/login/login';
 import { AdminProfilePage } from '../Admin/admin-profile/admin-profile';
 import { StoreProfilePage } from '../Store/store-profile/store-profile';
 import { ComplaintsPage } from '../Complaints/complaints/complaints';
@@ -14,7 +13,7 @@ import { FaqsPage } from '../faqs/faqs';
 })
 export class MorePage {
 
-  storeRef = firebase.database().ref("Restaurants").child(firebase.auth().currentUser.uid);
+  storeRef = firebase.database().ref("Restaurant Data/Restaurants").child(firebase.auth().currentUser.uid);
   store : Array<any> = [];
   status : string;
 

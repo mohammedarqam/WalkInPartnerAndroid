@@ -10,7 +10,7 @@ import * as firebase from 'firebase';
 export class AdminProfilePage {
 
   ownerKey = this.navParams.get("Okey");
-  adminRef = firebase.database().ref("PartnerAdmins").child(this.ownerKey);
+  adminRef = firebase.database().ref("Partners").child(this.ownerKey);
   admin : Array<any> = [];
 
 

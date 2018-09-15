@@ -5,8 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/Utility/login/login';
 import { TabsPage } from '../pages/Utility/tabs/tabs';
 import * as firebase from 'firebase';
-import { AdminProfilePage } from '../pages/More/Admin/admin-profile/admin-profile';
-import { StoreProfilePage } from '../pages/More/Store/store-profile/store-profile';
 
 
 
@@ -26,7 +24,7 @@ export class MyApp {
 
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-        firebase.database().ref("Restaurants").child(user.uid).once('value',itemSnap=>{
+        firebase.database().ref("Restaurant Data/Restaurants").child(user.uid).once('value',itemSnap=>{
             if(itemSnap.exists()){
               var welMsg = "Welcome"+" "+itemSnap.val().RestaurantName;
               this.rootPage = TabsPage;
